@@ -1,0 +1,310 @@
+{
+    "version": 1,
+    "interactions": [
+        {
+            "request": {
+                "method": "POST",
+                "uri": "https://secure.snd.payu.com/pl/standard/user/oauth/authorize",
+                "body": "b\"b'grant_type=client_credentials&client_id=REDACTED&client_secret=REDACTED'\"",
+                "headers": {
+                    "User-Agent": [
+                        "python-requests/2.22.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Content-Length": [
+                        "93"
+                    ],
+                    "Content-Type": [
+                        "application/x-www-form-urlencoded"
+                    ]
+                }
+            },
+            "response": {
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "cache-control": [
+                        "no-store",
+                        "no-cache, no-store, must-revalidate"
+                    ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ],
+                    "Date": [
+                        "Sat, 23 Oct 2021 16:20:28 GMT"
+                    ],
+                    "set-cookie": [
+                        "cookieFingerprint=87a8f68f-a4b0-4fc8-8b6f-efa743cef769; Expires=Sun, 23-Oct-2022 16:20:28 GMT; Path=/; Secure; HttpOnly",
+                        "payu_persistent=mobile_agent-false#; Expires=Tue, 18-Oct-2022 16:20:28 GMT; Path=/; Secure; HttpOnly"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ],
+                    "Content-Type": [
+                        "application/json;charset=UTF-8"
+                    ],
+                    "pragma": [
+                        "no-cache",
+                        "no-cache"
+                    ],
+                    "correlation-id": [
+                        "c93d7565-ba2e-41fe-99e0-126f7cf54047"
+                    ],
+                    "x-xss-protection": [
+                        "1; mode=block"
+                    ],
+                    "expires": [
+                        "0"
+                    ]
+                },
+                "body": {
+                    "string": "{\"access_token\": \"REDACTED\", \"token_type\": \"bearer\", \"expires_in\": 43199, \"grant_type\": \"client_credentials\"}"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "POST",
+                "uri": "https://secure.snd.payu.com/api/v2_1/orders",
+                "body": "b'b\\'{\"merchantPosId\": \"REDACTED\", \"description\": \"TEST_DESCRIPTION\", \"currencyCode\": \"PLN\", \"totalAmount\": \"1000\", \"customerIp\": \"127.0.0.1\", \"notifyUrl\": null, \"buyer\": {\"email\": \"johndoe@fakemail.com\", \"phone\": \"988988988\", \"firstName\": \"John\", \"lastName\": \"Doe\", \"language\": \"pl\"}, \"products\": [{\"name\": \"TEST_PRODUCT\", \"unitPrice\": \"100\", \"quantity\": \"10\"}]}\\''",
+                "headers": {
+                    "User-Agent": [
+                        "python-requests/2.22.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Content-Length": [
+                        "356"
+                    ],
+                    "Authorization": [
+                        "REDACTED"
+                    ]
+                }
+            },
+            "response": {
+                "status": {
+                    "code": 302,
+                    "message": "Found"
+                },
+                "headers": {
+                    "location": [
+                        "https://merch-prod.snd.payu.com/pay/?orderId=M7RW6CQS2C211023GUEST000P01&token=eyJhbGciOiJIUzI1NiJ9.eyJvcmRlcklkIjoiTTdSVzZDUVMyQzIxMTAyM0dVRVNUMDAwUDAxIiwicG9zSWQiOiJLUkk4R0VDUiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl0sInBheWVyRW1haWwiOiJqb2huZG9lQGZha2VtYWlsLmNvbSIsImV4cCI6MTYzNTA5MjQyOCwiaXNzIjoiUEFZVSIsImF1ZCI6ImFwaS1nYXRld2F5Iiwic3ViIjoiUGF5VSBzdWJqZWN0IiwianRpIjoiMjVjNGYwMTgtYWQxNS00YzAyLWI0MjktMjBhNDA0Y2QyODRjIn0._qZI5h_SjOABGMQSRqMT_y-28Vg3AZDlqOVaEpGOoWA"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "cache-control": [
+                        "no-cache, no-store, must-revalidate"
+                    ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ],
+                    "Date": [
+                        "Sat, 23 Oct 2021 16:20:28 GMT"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "pragma": [
+                        "no-cache"
+                    ],
+                    "correlation-id": [
+                        "48d9369d-5960-4bca-8fbe-f8b09aa67bb9"
+                    ],
+                    "expires": [
+                        "0"
+                    ]
+                },
+                "body": {
+                    "string": "{\"status\": {\"statusCode\": \"SUCCESS\"}, \"redirectUri\": \"https://merch-prod.snd.payu.com/pay/?orderId=M7RW6CQS2C211023GUEST000P01&token=eyJhbGciOiJIUzI1NiJ9.eyJvcmRlcklkIjoiTTdSVzZDUVMyQzIxMTAyM0dVRVNUMDAwUDAxIiwicG9zSWQiOiJLUkk4R0VDUiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl0sInBheWVyRW1haWwiOiJqb2huZG9lQGZha2VtYWlsLmNvbSIsImV4cCI6MTYzNTA5MjQyOCwiaXNzIjoiUEFZVSIsImF1ZCI6ImFwaS1nYXRld2F5Iiwic3ViIjoiUGF5VSBzdWJqZWN0IiwianRpIjoiMjVjNGYwMTgtYWQxNS00YzAyLWI0MjktMjBhNDA0Y2QyODRjIn0._qZI5h_SjOABGMQSRqMT_y-28Vg3AZDlqOVaEpGOoWA\", \"orderId\": \"M7RW6CQS2C211023GUEST000P01\", \"access_token\": \"REDACTED\"}"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "POST",
+                "uri": "https://secure.snd.payu.com/pl/standard/user/oauth/authorize",
+                "body": "b\"b'grant_type=client_credentials&client_id=REDACTED&client_secret=REDACTED'\"",
+                "headers": {
+                    "User-Agent": [
+                        "python-requests/2.22.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Content-Length": [
+                        "93"
+                    ],
+                    "Content-Type": [
+                        "application/x-www-form-urlencoded"
+                    ]
+                }
+            },
+            "response": {
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "cache-control": [
+                        "no-store",
+                        "no-cache, no-store, must-revalidate"
+                    ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ],
+                    "Date": [
+                        "Sat, 23 Oct 2021 16:20:41 GMT"
+                    ],
+                    "set-cookie": [
+                        "cookieFingerprint=e8dd775a-592f-48f6-8fff-90999a3cff15; Expires=Sun, 23-Oct-2022 16:20:41 GMT; Path=/; Secure; HttpOnly",
+                        "payu_persistent=mobile_agent-false#; Expires=Tue, 18-Oct-2022 16:20:41 GMT; Path=/; Secure; HttpOnly"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ],
+                    "Content-Type": [
+                        "application/json;charset=UTF-8"
+                    ],
+                    "pragma": [
+                        "no-cache",
+                        "no-cache"
+                    ],
+                    "correlation-id": [
+                        "d97b2af0-0d37-4c6a-8731-9f7e3961e6cf"
+                    ],
+                    "x-xss-protection": [
+                        "1; mode=block"
+                    ],
+                    "expires": [
+                        "0"
+                    ]
+                },
+                "body": {
+                    "string": "{\"access_token\": \"REDACTED\", \"token_type\": \"bearer\", \"expires_in\": 43199, \"grant_type\": \"client_credentials\"}"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "PUT",
+                "uri": "https://secure.snd.payu.com/api/v2_1/orders/M7RW6CQS2C211023GUEST000P01/status",
+                "body": "b'b\\'{\"orderId\": \"M7RW6CQS2C211023GUEST000P01\", \"orderStatus\": \"COMPLETED\"}\\''",
+                "headers": {
+                    "User-Agent": [
+                        "python-requests/2.22.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Content-Length": [
+                        "70"
+                    ],
+                    "Authorization": [
+                        "REDACTED"
+                    ]
+                }
+            },
+            "response": {
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "cache-control": [
+                        "no-cache, no-store, max-age=0, must-revalidate",
+                        "no-cache, no-store, must-revalidate"
+                    ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ],
+                    "Date": [
+                        "Sat, 23 Oct 2021 16:20:41 GMT"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ],
+                    "Content-Type": [
+                        "application/json;charset=UTF-8"
+                    ],
+                    "pragma": [
+                        "no-cache",
+                        "no-cache"
+                    ],
+                    "correlation-id": [
+                        "f2a6c258-4297-4323-b491-cb56e5782731"
+                    ],
+                    "x-xss-protection": [
+                        "1; mode=block"
+                    ],
+                    "expires": [
+                        "0",
+                        "0"
+                    ]
+                },
+                "body": {
+                    "string": "{\"status\": {\"statusCode\": \"SUCCESS\", \"statusDesc\": \"Status was updated\"}, \"access_token\": \"REDACTED\"}"
+                }
+            }
+        }
+    ]
+}

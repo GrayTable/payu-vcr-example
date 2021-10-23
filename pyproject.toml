@@ -1,0 +1,17 @@
+[tool.poetry]
+name = 'vcr-example'
+version = '0.0.1'
+description = 'VCR usage example in api wrapper tests'
+authors = ['Kamil Biel <hello@kamilbiel.com>']
+packages = [
+    { include = "payu" }
+]
+
+[tool.poetry.dependencies]
+python = '^3.6'
+pydantic = '~1.8.2'
+requests = '~2.22.0'
+
+[build-system]
+requires = ['poetry-core~=1.0']
+build-backend = 'poetry.core.masonry.api'
