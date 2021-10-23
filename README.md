@@ -2,6 +2,7 @@
 
 Repo shows an example of using VCR to record requests and responses when testing an API wrapper
 
+[Everything related to VCR is located in the tests directory](payu/tests).
 
 ## Cassettes location
 
