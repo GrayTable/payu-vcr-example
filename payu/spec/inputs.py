@@ -2,14 +2,18 @@ from typing import List, Literal, Optional
 
 from pydantic import BaseModel, Field
 
-from ..enums import OrderStatus
+from .enums import OrderStatus
+from .http import HTTPRequestData
+
+__all__ = [
+    "AuthorizeInput",
+    "OrderCreateInput",
+    "OrderCaptureInput",
+    "RefundCreateInput",
+]
 
 
-class PayURequest(BaseModel):
-    pass
-
-
-class AuthorizeRequest(PayURequest):
+class AuthorizeInput(HTTPRequestData):
     """
     SEE: https://developers.payu.com/en/restapi.html#references_api_signature
     """
@@ -19,32 +23,7 @@ class AuthorizeRequest(PayURequest):
     client_secret: str
 
 
-class SignedRequestHeaders(PayURequest):
-    """
-    SEE: https://developers.payu.com/en/restapi.html#references_api_signature
-    """
-
-    authorization: str
-    content_type: str = Field("application/json")
-
-    def dict(self, *args, **kwargs):
-        data = super().dict(*args, **kwargs)
-        data["Content-Type"] = data.pop("content_type")
-        data["Authorization"] = data.pop("authorization")
-
-        return data
-
-
-class SignedRequest(BaseModel):
-    """
-    SEE: https://developers.payu.com/en/restapi.html#references_api_signature
-    """
-
-    headers: SignedRequestHeaders
-    data: Optional[PayURequest]
-
-
-class OrderCreateRequestBuyer(PayURequest):
+class OrderCreateInputBuyer(BaseModel):
     """
     SEE: https://developers.payu.com/en/restapi.html#creating_new_order_api
     """
@@ -56,7 +35,7 @@ class OrderCreateRequestBuyer(PayURequest):
     language: str
 
 
-class OrderCreateRequestProduct(PayURequest):
+class OrderCreateInputProduct(BaseModel):
     """
     SEE: https://developers.payu.com/en/restapi.html#creating_new_order_api
     """
@@ -66,7 +45,7 @@ class OrderCreateRequestProduct(PayURequest):
     quantity: str
 
 
-class OrderCreateRequest(PayURequest):
+class OrderCreateInput(HTTPRequestData):
     """
     SEE: https://developers.payu.com/en/restapi.html#creating_new_order_api
     """
@@ -77,11 +56,11 @@ class OrderCreateRequest(PayURequest):
     totalAmount: str
     customerIp: str = "127.0.0.1"
     notifyUrl: Optional[str]
-    buyer: Optional[OrderCreateRequestBuyer]
-    products: List[OrderCreateRequestProduct]
+    buyer: Optional[OrderCreateInputBuyer]
+    products: List[OrderCreateInputProduct]
 
 
-class OrderCaptureRequest(PayURequest):
+class OrderCaptureInput(HTTPRequestData):
     """
     https://developers.payu.com/en/restapi.html#status_update
     """
@@ -90,7 +69,7 @@ class OrderCaptureRequest(PayURequest):
     orderStatus: Literal[OrderStatus.COMPLETED]
 
 
-class RefundCreateRequestRefund(PayURequest):
+class RefundCreateInputRefund(BaseModel):
     """
     SEE: https://developers.payu.com/en/restapi.html#refunds_create
     """
@@ -101,9 +80,9 @@ class RefundCreateRequestRefund(PayURequest):
     )
 
 
-class RefundCreateRequest(PayURequest):
+class RefundCreateInput(HTTPRequestData):
     """
     SEE: https://developers.payu.com/en/restapi.html#refunds_create
     """
 
-    refund: RefundCreateRequestRefund
+    refund: RefundCreateInputRefund

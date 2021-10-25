@@ -19,6 +19,9 @@
                     "Connection": [
                         "keep-alive"
                     ],
+                    "content_type": [
+                        "application/x-www-form-urlencoded"
+                    ],
                     "Content-Length": [
                         "93"
                     ],
@@ -33,44 +36,44 @@
                     "message": "OK"
                 },
                 "headers": {
-                    "Content-Type": [
-                        "application/json;charset=UTF-8"
+                    "cache-control": [
+                        "no-store",
+                        "no-cache, no-store, must-revalidate"
                     ],
-                    "x-content-type-options": [
-                        "nosniff"
+                    "set-cookie": [
+                        "cookieFingerprint=6ce72367-1d1c-4857-b53d-4ab170b36106; Expires=Tue, 25-Oct-2022 16:58:07 GMT; Path=/; Secure; HttpOnly",
+                        "payu_persistent=mobile_agent-false#; Expires=Thu, 20-Oct-2022 16:58:07 GMT; Path=/; Secure; HttpOnly"
                     ],
-                    "correlation-id": [
-                        "6449f7fb-a28c-4251-88b7-f3ada069dfc8"
+                    "Connection": [
+                        "keep-alive"
                     ],
                     "Date": [
-                        "Sat, 23 Oct 2021 16:17:23 GMT"
+                        "Mon, 25 Oct 2021 16:58:07 GMT"
                     ],
                     "x-xss-protection": [
                         "1; mode=block"
                     ],
+                    "correlation-id": [
+                        "92ca8d10-89d2-44b9-b199-caec0e80d6d8"
+                    ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "Content-Type": [
+                        "application/json;charset=UTF-8"
+                    ],
                     "expires": [
                         "0"
-                    ],
-                    "x-frame-options": [
-                        "SAMEORIGIN"
                     ],
                     "pragma": [
                         "no-cache",
                         "no-cache"
                     ],
-                    "Transfer-Encoding": [
-                        "chunked"
-                    ],
-                    "set-cookie": [
-                        "cookieFingerprint=8b220273-6ea7-4955-a8ac-eaa0bb967287; Expires=Sun, 23-Oct-2022 16:17:23 GMT; Path=/; Secure; HttpOnly",
-                        "payu_persistent=mobile_agent-false#; Expires=Tue, 18-Oct-2022 16:17:23 GMT; Path=/; Secure; HttpOnly"
-                    ],
-                    "cache-control": [
-                        "no-store",
-                        "no-cache, no-store, must-revalidate"
-                    ],
-                    "Connection": [
-                        "keep-alive"
+                    "x-frame-options": [
+                        "SAMEORIGIN"
                     ]
                 },
                 "body": {
@@ -96,11 +99,14 @@
                     "Connection": [
                         "keep-alive"
                     ],
-                    "Content-Type": [
+                    "content_type": [
                         "application/json"
                     ],
                     "Content-Length": [
                         "356"
+                    ],
+                    "Content-Type": [
+                        "application/json"
                     ],
                     "Authorization": [
                         "REDACTED"
@@ -113,42 +119,42 @@
                     "message": "Found"
                 },
                 "headers": {
-                    "Content-Type": [
-                        "application/json"
-                    ],
-                    "x-content-type-options": [
-                        "nosniff"
-                    ],
-                    "correlation-id": [
-                        "e8155afe-7f31-475e-a545-0af947737643"
-                    ],
-                    "Date": [
-                        "Sat, 23 Oct 2021 16:17:23 GMT"
-                    ],
-                    "expires": [
-                        "0"
-                    ],
-                    "x-frame-options": [
-                        "SAMEORIGIN"
-                    ],
-                    "pragma": [
-                        "no-cache"
-                    ],
-                    "Transfer-Encoding": [
-                        "chunked"
+                    "location": [
+                        "https://merch-prod.snd.payu.com/pay/?orderId=3B8BZB864T211025GUEST000P01&token=eyJhbGciOiJIUzI1NiJ9.eyJvcmRlcklkIjoiM0I4QlpCODY0VDIxMTAyNUdVRVNUMDAwUDAxIiwicG9zSWQiOiJLUkk4R0VDUiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl0sInBheWVyRW1haWwiOiJqb2huZG9lQGZha2VtYWlsLmNvbSIsImV4cCI6MTYzNTI2NzQ4NywiaXNzIjoiUEFZVSIsImF1ZCI6ImFwaS1nYXRld2F5Iiwic3ViIjoiUGF5VSBzdWJqZWN0IiwianRpIjoiNTM0OGMxMmMtOTlmZS00YWJhLWJmNDktM2Y2Y2RmMDVhYmU4In0.v1qhhjwTPzw8xgJekCMsrjc4jQX8uFyrKL5Eq4uZhuk"
                     ],
                     "cache-control": [
                         "no-cache, no-store, must-revalidate"
                     ],
-                    "location": [
-                        "https://merch-prod.snd.payu.com/pay/?orderId=X7WJGG2X9R211023GUEST000P01&token=eyJhbGciOiJIUzI1NiJ9.eyJvcmRlcklkIjoiWDdXSkdHMlg5UjIxMTAyM0dVRVNUMDAwUDAxIiwicG9zSWQiOiJLUkk4R0VDUiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl0sInBheWVyRW1haWwiOiJqb2huZG9lQGZha2VtYWlsLmNvbSIsImV4cCI6MTYzNTA5MjI0MywiaXNzIjoiUEFZVSIsImF1ZCI6ImFwaS1nYXRld2F5Iiwic3ViIjoiUGF5VSBzdWJqZWN0IiwianRpIjoiYzIzZjVkMzAtOTJjNi00ZmU0LTllM2EtZmYyZjYxNmY3ZjEyIn0.eKRWpso3esQx3495SlJBJkZ2MFNASIa5t7_LPFN0eso"
-                    ],
                     "Connection": [
                         "keep-alive"
+                    ],
+                    "correlation-id": [
+                        "227502b9-e029-46ec-8b5b-e294fd9eb94f"
+                    ],
+                    "Date": [
+                        "Mon, 25 Oct 2021 16:58:07 GMT"
+                    ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "expires": [
+                        "0"
+                    ],
+                    "pragma": [
+                        "no-cache"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
                     ]
                 },
                 "body": {
-                    "string": "{\"status\": {\"statusCode\": \"SUCCESS\"}, \"redirectUri\": \"https://merch-prod.snd.payu.com/pay/?orderId=X7WJGG2X9R211023GUEST000P01&token=eyJhbGciOiJIUzI1NiJ9.eyJvcmRlcklkIjoiWDdXSkdHMlg5UjIxMTAyM0dVRVNUMDAwUDAxIiwicG9zSWQiOiJLUkk4R0VDUiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl0sInBheWVyRW1haWwiOiJqb2huZG9lQGZha2VtYWlsLmNvbSIsImV4cCI6MTYzNTA5MjI0MywiaXNzIjoiUEFZVSIsImF1ZCI6ImFwaS1nYXRld2F5Iiwic3ViIjoiUGF5VSBzdWJqZWN0IiwianRpIjoiYzIzZjVkMzAtOTJjNi00ZmU0LTllM2EtZmYyZjYxNmY3ZjEyIn0.eKRWpso3esQx3495SlJBJkZ2MFNASIa5t7_LPFN0eso\", \"orderId\": \"X7WJGG2X9R211023GUEST000P01\", \"access_token\": \"REDACTED\"}"
+                    "string": "{\"status\": {\"statusCode\": \"SUCCESS\"}, \"redirectUri\": \"https://merch-prod.snd.payu.com/pay/?orderId=3B8BZB864T211025GUEST000P01&token=eyJhbGciOiJIUzI1NiJ9.eyJvcmRlcklkIjoiM0I4QlpCODY0VDIxMTAyNUdVRVNUMDAwUDAxIiwicG9zSWQiOiJLUkk4R0VDUiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl0sInBheWVyRW1haWwiOiJqb2huZG9lQGZha2VtYWlsLmNvbSIsImV4cCI6MTYzNTI2NzQ4NywiaXNzIjoiUEFZVSIsImF1ZCI6ImFwaS1nYXRld2F5Iiwic3ViIjoiUGF5VSBzdWJqZWN0IiwianRpIjoiNTM0OGMxMmMtOTlmZS00YWJhLWJmNDktM2Y2Y2RmMDVhYmU4In0.v1qhhjwTPzw8xgJekCMsrjc4jQX8uFyrKL5Eq4uZhuk\", \"orderId\": \"3B8BZB864T211025GUEST000P01\", \"access_token\": \"REDACTED\"}"
                 }
             }
         }
