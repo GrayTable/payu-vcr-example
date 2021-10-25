@@ -8,7 +8,7 @@ from vcr.config import VCR
 
 from ..client import PayUClient
 from ..config import PayUConfig
-from ..schema.requests import OrderCreateRequest, RefundCreateRequest
+from ..spec import OrderCreateInput, RefundCreateInput
 
 CLIENT_CONFIG = PayUConfig(
     client_id=os.environ.get("TEST_PAYU_CLIENT_ID", 9999999),
@@ -62,7 +62,7 @@ def payu_client(payu_config) -> PayUClient:
 
 
 @pytest.fixture
-def order_create_request(payu_config: PayUConfig) -> OrderCreateRequest:
+def order_create_input(payu_config: PayUConfig) -> OrderCreateInput:
     data = {
         "notifyUrl": None,
         "customerIp": "127.0.0.1",
@@ -79,14 +79,14 @@ def order_create_request(payu_config: PayUConfig) -> OrderCreateRequest:
         },
         "products": [{"name": "TEST_PRODUCT", "unitPrice": "100", "quantity": "10"}],
     }
-    return OrderCreateRequest(**data)
+    return OrderCreateInput(**data)
 
 
 @pytest.fixture
-def refund_create_request() -> RefundCreateRequest:
+def refund_create_input() -> RefundCreateInput:
     data = {
         "refund": {
             "description": "TEST_REFUND_DESCRIPTION",
         }
     }
-    return RefundCreateRequest(**data)
+    return RefundCreateInput(**data)

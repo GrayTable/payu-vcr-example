@@ -2,10 +2,19 @@ from typing import List, Optional
 
 from pydantic.main import BaseModel
 
-from ..enums import OrderStatus, StatusCode
+from .enums import OrderStatus, StatusCode
+
+__all__ = [
+    "AuthorizeOutput",
+    "StatusOutput",
+    "OrderCreateOutput",
+    "OrderCaptureOutput",
+    "RefundCreateOutput",
+    "OrderDetailOutput",
+]
 
 
-class AuthorizeResponse(BaseModel):
+class AuthorizeOutput(BaseModel):
     """
     SEE: https://developers.payu.com/en/restapi.html#references_api_signature
     """
@@ -27,7 +36,7 @@ class AuthorizeResponse(BaseModel):
         )
 
 
-class StatusResponse(BaseModel):
+class StatusOutput(BaseModel):
     """
     SEE: https://developers.payu.com/en/restapi.html#references_statuses
     """
@@ -39,12 +48,12 @@ class StatusResponse(BaseModel):
     code: Optional[str]
 
 
-class OrderCreateResponse(BaseModel):
+class OrderCreateOutput(BaseModel):
     """
     SEE: https://developers.payu.com/en/restapi.html#creating_new_order
     """
 
-    status: StatusResponse
+    status: StatusOutput
     redirectUri: Optional[str]
     orderId: Optional[str]
     extOrderId: Optional[str]
@@ -60,19 +69,19 @@ class OrderCreateResponse(BaseModel):
         )
 
 
-class OrderCaptureResponse(BaseModel):
+class OrderCaptureOutput(BaseModel):
     """
     SEE: https://developers.payu.com/en/restapi.html#status_update
     """
 
-    status: StatusResponse
+    status: StatusOutput
 
     @property
     def success(self) -> bool:
         return self.status and self.status.statusCode == StatusCode.SUCCESS or False
 
 
-class RefundCreateResponseRefund(BaseModel):
+class RefundCreateOutputRefund(BaseModel):
     """
     SEE: https://developers.payu.com/en/restapi.html#refunds_create
     """
@@ -87,14 +96,14 @@ class RefundCreateResponseRefund(BaseModel):
     statusDateTime: str
 
 
-class RefundCreateResponse(BaseModel):
+class RefundCreateOutput(BaseModel):
     """
     SEE: https://developers.payu.com/en/restapi.html#refunds_create
     """
 
-    status: StatusResponse
+    status: StatusOutput
     orderId: Optional[str]
-    refund: Optional[RefundCreateResponseRefund]
+    refund: Optional[RefundCreateOutputRefund]
 
     @property
     def success(self) -> bool:
@@ -107,7 +116,7 @@ class RefundCreateResponse(BaseModel):
         )
 
 
-class OrderDetailResponseProduct(BaseModel):
+class OrderDetailOutputProduct(BaseModel):
     """
     SEE: https://developers.payu.com/en/restapi.html#order_data_retrieve
     """
@@ -117,7 +126,7 @@ class OrderDetailResponseProduct(BaseModel):
     quantity: str
 
 
-class OrderDetailResponseOrder(BaseModel):
+class OrderDetailOutputOrder(BaseModel):
     """
     SEE: https://developers.payu.com/en/restapi.html#order_data_retrieve
     """
@@ -132,16 +141,16 @@ class OrderDetailResponseOrder(BaseModel):
     currencyCode: str
     totalAmount: str
     status: OrderStatus
-    products: List[OrderDetailResponseProduct]
+    products: List[OrderDetailOutputProduct]
 
 
-class OrderDetailResponse(BaseModel):
+class OrderDetailOutput(BaseModel):
     """
     SEE: https://developers.payu.com/en/restapi.html#order_data_retrieve
     """
 
-    status: StatusResponse
-    orders: Optional[List[OrderDetailResponseOrder]]
+    status: StatusOutput
+    orders: Optional[List[OrderDetailOutputOrder]]
 
     @property
     def success(self) -> bool:
