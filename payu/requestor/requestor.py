@@ -14,6 +14,7 @@ class Requestor(AbstractRequestor):
             http.HTTPMethod.POST: requests.post,
             http.HTTPMethod.PUT: requests.put,
             http.HTTPMethod.GET: requests.get,
+            http.HTTPMethod.DELETE: requests.delete,
         }
 
         func = method_func_map.get(method)

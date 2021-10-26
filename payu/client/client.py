@@ -121,6 +121,21 @@ class PayUClient(AbstractPayUClient):
         order_capture_response = outputs.OrderCaptureOutput(**response.data)
         return order_capture_response
 
+    def cancel_order(self, order_id: str) -> outputs.OrderCancelOutput:
+        """
+        SEE: https://developers.payu.com/en/restapi.html#cancellation
+        """
+        url = self.__create_api_url("/orders/{}", order_id)
+
+        request = HTTPRequest(
+            url=url,
+            method=HTTPMethod.DELETE,
+        )
+        response = self.__send_signed_request(request=request)
+
+        order_cancel_response = outputs.OrderCancelOutput(**response.data)
+        return order_cancel_response
+
     def create_refund(
         self, order_id: str, data: DictOrInput[inputs.RefundCreateInput]
     ) -> outputs.RefundCreateOutput:
