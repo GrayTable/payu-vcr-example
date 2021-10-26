@@ -35,6 +35,7 @@ class HTTPMethod(str, Enum):
     POST = "POST"
     PUT = "PUT"
     GET = "GET"
+    DELETE = "DELETE"
 
 
 class HTTPHeaders(BaseModel):

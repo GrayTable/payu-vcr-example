@@ -160,3 +160,18 @@ class OrderDetailOutput(BaseModel):
                 self.orders is not None and len(self.orders) > 0,
             ]
         )
+
+
+class OrderCancelOutput(BaseModel):
+    """
+    SEE: https://developers.payu.com/en/restapi.html#cancellation
+    """
+
+    status: StatusOutput
+    orderId: str
+
+    extOrderId: Optional[str]
+
+    @property
+    def success(self) -> bool:
+        return self.status and self.status.statusCode == StatusCode.SUCCESS or False

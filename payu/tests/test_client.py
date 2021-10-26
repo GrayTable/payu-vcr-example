@@ -63,3 +63,19 @@ def test_get_order(
         create_refund_response = payu_client.get_order(create_order_response.orderId)
 
     assert create_refund_response.success is True
+
+
+def test_cancel_order(
+    payu_vcr: VCR,
+    payu_client: PayUClient,
+    order_create_input: OrderCreateInput,
+):
+    with payu_vcr.use_cassette("client_cancel_order.json"):
+        create_order_response = payu_client.create_order(order_create_input)
+        assert create_order_response.orderId is not None
+
+        capture_response = payu_client.cancel_order(
+            order_id=create_order_response.orderId
+        )
+
+    assert capture_response.success is True
