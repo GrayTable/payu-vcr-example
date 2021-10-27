@@ -4,8 +4,14 @@ from ..config import PayUConfig, PayUUrls
 from ..requestor import Requestor
 from ..requestor.abstract import AbstractRequestor
 from ..spec import enums, inputs, outputs
-from ..spec.http import HTTPMethod, HTTPRequest, HTTPResponse, SignedHTTPHeaders
+from ..spec.http import (
+    HTTPMethod,
+    HTTPRequest,
+    HTTPResponse,
+    SignedHTTPHeaders,
+)
 from .abstract import AbstractPayUClient, DictOrInput
+from .exceptions import PayUError
 
 __all__ = ["PayUClient"]
 
@@ -27,9 +33,20 @@ class PayUClient(AbstractPayUClient):
         )
         return request
 
+    def __send_request(self, request: HTTPRequest) -> HTTPResponse:
+        response = self.__requestor.send_request(request=request)
+
+        if response.status > 399:
+            raise PayUError(
+                status_code=response.status,
+                data=response.data,
+            )
+
+        return response
+
     def __send_signed_request(self, request: HTTPRequest) -> HTTPResponse:
         signed_request = self.__sign_request(request)
-        response = self.__requestor.send_request(request=signed_request)
+        response = self.__send_request(request=signed_request)
         return response
 
     def __create_api_url(
@@ -54,11 +71,10 @@ class PayUClient(AbstractPayUClient):
             url=url,
             data=authorize_input,
         )
+        response = self.__send_request(request=request)
 
-        response = self.__requestor.send_request(request=request)
-        authorize_response = outputs.AuthorizeOutput(**response.data)
-
-        return authorize_response
+        authorize = outputs.AuthorizeOutput(**response.data)
+        return authorize
 
     def get_order(
         self,
@@ -75,8 +91,8 @@ class PayUClient(AbstractPayUClient):
         )
         response = self.__send_signed_request(request=request)
 
-        order_detail_response = outputs.OrderDetailOutput(**response.data)
-        return order_detail_response
+        order_detail = outputs.OrderDetailOutput(**response.data)
+        return order_detail
 
     def create_order(
         self, data: DictOrInput[inputs.OrderCreateInput]
@@ -98,8 +114,8 @@ class PayUClient(AbstractPayUClient):
         )
         response = self.__send_signed_request(request=request)
 
-        order_create_response = outputs.OrderCreateOutput(**response.data)
-        return order_create_response
+        order_create = outputs.OrderCreateOutput(**response.data)
+        return order_create
 
     def capture_order(self, order_id: str) -> outputs.OrderCaptureOutput:
         """
@@ -118,8 +134,8 @@ class PayUClient(AbstractPayUClient):
         )
         response = self.__send_signed_request(request=request)
 
-        order_capture_response = outputs.OrderCaptureOutput(**response.data)
-        return order_capture_response
+        order_capture = outputs.OrderCaptureOutput(**response.data)
+        return order_capture
 
     def cancel_order(self, order_id: str) -> outputs.OrderCancelOutput:
         """
@@ -133,8 +149,8 @@ class PayUClient(AbstractPayUClient):
         )
         response = self.__send_signed_request(request=request)
 
-        order_cancel_response = outputs.OrderCancelOutput(**response.data)
-        return order_cancel_response
+        order_cancel = outputs.OrderCancelOutput(**response.data)
+        return order_cancel
 
     def create_refund(
         self, order_id: str, data: DictOrInput[inputs.RefundCreateInput]
@@ -148,13 +164,13 @@ class PayUClient(AbstractPayUClient):
             refund_create_input = data
 
         url = self.__create_api_url("/orders/{}/refunds", order_id)
+
         request = HTTPRequest(
             method=HTTPMethod.POST,
             url=url,
             data=refund_create_input,
         )
-
         response = self.__send_signed_request(request=request)
 
-        refund_create_response = outputs.RefundCreateOutput(**response.data)
-        return refund_create_response
+        refund_create = outputs.RefundCreateOutput(**response.data)
+        return refund_create

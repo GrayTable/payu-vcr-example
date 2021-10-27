@@ -1,3 +1,10 @@
+from unittest import mock
+from unittest.mock import MagicMock
+
+import pytest
+from payu.client.exceptions import PayUError
+from payu.requestor.requestor import Requestor
+from payu.spec.http import HTTPResponse
 from vcr.config import VCR
 
 from ..client import PayUClient
@@ -79,3 +86,19 @@ def test_cancel_order(
         )
 
     assert capture_response.success is True
+
+
+@mock.patch.object(Requestor, "send_request")
+def test_payu_error(
+    mock_requestor_send_request: MagicMock,
+    payu_client: PayUClient,
+    payu_error_response: HTTPResponse,
+    order_create_input: OrderCreateInput,
+):
+    mock_requestor_send_request.return_value = payu_error_response
+
+    with pytest.raises(PayUError) as exc_info:
+        payu_client.create_order(order_create_input)
+
+    assert exc_info.value.status_code == payu_error_response.status
+    assert exc_info.value.data == payu_error_response.data

@@ -4,6 +4,7 @@ from json.decoder import JSONDecodeError
 
 import pytest
 import vcr
+from payu.spec import http
 from vcr.config import VCR
 
 from ..client import PayUClient
@@ -59,6 +60,18 @@ def payu_config() -> PayUConfig:
 @pytest.fixture
 def payu_client(payu_config) -> PayUClient:
     return PayUClient(payu_config)
+
+
+@pytest.fixture
+def payu_error_response() -> http.HTTPResponse:
+    return http.HTTPResponse(
+        status=403,
+        data={
+            "status": {
+                "statusCode": "ERROR_VALUE_INVALID",
+            }
+        },
+    )
 
 
 @pytest.fixture
