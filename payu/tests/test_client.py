@@ -88,6 +88,16 @@ def test_cancel_order(
     assert capture_response.success is True
 
 
+def test_get_pay_methods(
+    payu_vcr: VCR,
+    payu_client: PayUClient,
+):
+    with payu_vcr.use_cassette("client_get_pay_methods.json"):
+        paymethods = payu_client.get_pay_methods()
+
+    assert len(paymethods.payByLinks) > 0
+
+
 @mock.patch.object(Requestor, "send_request")
 def test_payu_error(
     mock_requestor_send_request: MagicMock,

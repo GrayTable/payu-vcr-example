@@ -174,3 +174,18 @@ class PayUClient(AbstractPayUClient):
 
         refund_create = outputs.RefundCreateOutput(**response.data)
         return refund_create
+
+    def get_pay_methods(self) -> outputs.PayMethodsOutput:
+        """
+        SEE: https://developers.payu.com/en/restapi.html#Transparent_retrieve
+        """
+        url = self.__create_api_url("/paymethods")
+
+        request = HTTPRequest(
+            method=HTTPMethod.GET,
+            url=url,
+        )
+        response = self.__send_signed_request(request=request)
+
+        pay_methods = outputs.PayMethodsOutput(**response.data)
+        return pay_methods

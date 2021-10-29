@@ -1,0 +1,162 @@
+{
+    "version": 1,
+    "interactions": [
+        {
+            "request": {
+                "method": "POST",
+                "uri": "https://secure.snd.payu.com/pl/standard/user/oauth/authorize",
+                "body": "b\"b'grant_type=client_credentials&client_id=REDACTED&client_secret=REDACTED'\"",
+                "headers": {
+                    "User-Agent": [
+                        "python-requests/2.22.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "content_type": [
+                        "application/x-www-form-urlencoded"
+                    ],
+                    "Content-Length": [
+                        "93"
+                    ],
+                    "Content-Type": [
+                        "application/x-www-form-urlencoded"
+                    ]
+                }
+            },
+            "response": {
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "set-cookie": [
+                        "cookieFingerprint=ad13846a-e7b1-4f24-9d29-7c37d0d74252; Expires=Sat, 29-Oct-2022 18:46:55 GMT; Path=/; Secure; HttpOnly",
+                        "payu_persistent=mobile_agent-false#; Expires=Mon, 24-Oct-2022 18:46:55 GMT; Path=/; Secure; HttpOnly"
+                    ],
+                    "correlation-id": [
+                        "d713e77e-3a34-4e6b-a652-6495c1754b2c"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "Date": [
+                        "Fri, 29 Oct 2021 18:46:55 GMT"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ],
+                    "cache-control": [
+                        "no-store",
+                        "no-cache, no-store, must-revalidate"
+                    ],
+                    "pragma": [
+                        "no-cache",
+                        "no-cache"
+                    ],
+                    "expires": [
+                        "0"
+                    ],
+                    "x-xss-protection": [
+                        "1; mode=block"
+                    ],
+                    "Content-Type": [
+                        "application/json;charset=UTF-8"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ]
+                },
+                "body": {
+                    "string": "{\"access_token\": \"REDACTED\", \"token_type\": \"bearer\", \"expires_in\": 43199, \"grant_type\": \"client_credentials\"}"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "GET",
+                "uri": "https://secure.snd.payu.com/api/v2_1/paymethods",
+                "body": "b'None'",
+                "headers": {
+                    "User-Agent": [
+                        "python-requests/2.22.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "content_type": [
+                        "application/json"
+                    ],
+                    "Authorization": [
+                        "REDACTED"
+                    ]
+                }
+            },
+            "response": {
+                "status": {
+                    "code": 200,
+                    "message": ""
+                },
+                "headers": {
+                    "correlation-id": [
+                        "848a1c1e-9b42-4bd8-8c71-653e49b0aeb9"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "x-application-context": [
+                        "application:logsOnConsole:8080"
+                    ],
+                    "Date": [
+                        "Fri, 29 Oct 2021 18:46:56 GMT"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ],
+                    "cache-control": [
+                        "no-cache, no-store, max-age=0, must-revalidate",
+                        "no-cache, no-store, must-revalidate"
+                    ],
+                    "pragma": [
+                        "no-cache",
+                        "no-cache"
+                    ],
+                    "expires": [
+                        "0",
+                        "0"
+                    ],
+                    "x-xss-protection": [
+                        "1; mode=block"
+                    ],
+                    "Content-Type": [
+                        "application/json;charset=UTF-8"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ]
+                },
+                "body": {
+                    "string": "{\"cardTokens\": [], \"pexTokens\": [], \"payByLinks\": [{\"value\": \"jp\", \"brandImageUrl\": \"https://static.payu.com/images/mobile/logos/pbl_jp.png\", \"name\": \"Apple Pay\", \"status\": \"ENABLED\", \"minAmount\": 50, \"maxAmount\": 99999999}, {\"value\": \"dp\", \"brandImageUrl\": \"https://static.payu.com/images/mobile/logos/pbl_dp_off.png\", \"name\": \"P\\u0142ac\\u0119 p\\u00f3\\u017aniej\", \"status\": \"DISABLED\", \"minAmount\": 10000, \"maxAmount\": 200000}, {\"value\": \"ai\", \"brandImageUrl\": \"https://static.payu.com/images/mobile/logos/pbl_ai.png\", \"name\": \"Raty PayU\", \"status\": \"ENABLED\", \"minAmount\": 30000, \"maxAmount\": 2000000}, {\"value\": \"blik\", \"brandImageUrl\": \"https://static.payu.com/images/mobile/logos/pbl_blik.png\", \"name\": \"BLIK\", \"status\": \"ENABLED\", \"minAmount\": 1, \"maxAmount\": 99999999}, {\"value\": \"p\", \"brandImageUrl\": \"https://static.payu.com/images/mobile/logos/pbl_p.png\", \"name\": \"P\\u0142ac\\u0119 z iPKO\", \"status\": \"ENABLED\", \"minAmount\": 50, \"maxAmount\": 99999999}, {\"value\": \"m\", \"brandImageUrl\": \"https://static.payu.com/images/mobile/logos/pbl_m.png\", \"name\": \"mTransfer\", \"status\": \"ENABLED\", \"minAmount\": 50, \"maxAmount\": 99999999}, {\"value\": \"o\", \"brandImageUrl\": \"https://static.payu.com/images/mobile/logos/pbl_o.png\", \"name\": \"P\\u0142ac\\u0119 z Bankiem Pekao S.A.\", \"status\": \"ENABLED\", \"minAmount\": 50, \"maxAmount\": 99999999}, {\"value\": \"c\", \"brandImageUrl\": \"https://static.payu.com/images/mobile/logos/pbl_c.png\", \"name\": \"P\\u0142atno\\u015b\\u0107 online kart\\u0105 p\\u0142atnicz\\u0105\", \"status\": \"ENABLED\", \"minAmount\": 5, \"maxAmount\": 99999999}], \"status\": {\"statusCode\": \"SUCCESS\"}, \"access_token\": \"REDACTED\"}"
+                }
+            }
+        }
+    ]
+}
