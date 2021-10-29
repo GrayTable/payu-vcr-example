@@ -178,6 +178,10 @@ class OrderCancelOutput(BaseModel):
 
 
 class PayMethodsOutputPBL(BaseModel):
+    """
+    SEE: https://developers.payu.com/en/restapi.html#Transparent_retrieve
+    """
+
     value: str
     name: str
     brandImageUrl: str
@@ -187,6 +191,10 @@ class PayMethodsOutputPBL(BaseModel):
 
 
 class PayMethodsOutput(BaseModel):
+    """
+    SEE: https://developers.payu.com/en/restapi.html#Transparent_retrieve
+    """
+
     payByLinks: List[PayMethodsOutputPBL]
     cardTokens: List[Any]
     pexTokens: List[Any]

@@ -4,12 +4,7 @@ from ..config import PayUConfig, PayUUrls
 from ..requestor import Requestor
 from ..requestor.abstract import AbstractRequestor
 from ..spec import enums, inputs, outputs
-from ..spec.http import (
-    HTTPMethod,
-    HTTPRequest,
-    HTTPResponse,
-    SignedHTTPHeaders,
-)
+from ..spec.http import HTTPMethod, HTTPRequest, HTTPResponse, SignedHTTPHeaders
 from .abstract import AbstractPayUClient, DictOrInput
 from .exceptions import PayUError
 

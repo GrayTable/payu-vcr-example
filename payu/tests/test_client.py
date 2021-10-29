@@ -2,10 +2,11 @@ from unittest import mock
 from unittest.mock import MagicMock
 
 import pytest
+from vcr.config import VCR
+
 from payu.client.exceptions import PayUError
 from payu.requestor.requestor import Requestor
 from payu.spec.http import HTTPResponse
-from vcr.config import VCR
 
 from ..client import PayUClient
 from ..spec import OrderCreateInput, RefundCreateInput
