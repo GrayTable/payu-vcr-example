@@ -1,4 +1,4 @@
-from typing import List, Literal, Optional
+from typing import Any, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, Field
 
@@ -35,6 +35,14 @@ class OrderCreateInputBuyer(BaseModel):
     language: str
 
 
+class OrderCreateInputPayMethods(BaseModel):
+    """
+    SEE: https://developers.payu.com/en/restapi.html#transparent
+    """
+
+    payMethod: Dict[str, Any]
+
+
 class OrderCreateInputProduct(BaseModel):
     """
     SEE: https://developers.payu.com/en/restapi.html#creating_new_order_api
@@ -48,6 +56,7 @@ class OrderCreateInputProduct(BaseModel):
 class OrderCreateInput(HTTPRequestData):
     """
     SEE: https://developers.payu.com/en/restapi.html#creating_new_order_api
+    SEE: https://developers.payu.com/en/restapi.html#transparent
     """
 
     merchantPosId: str
@@ -58,6 +67,7 @@ class OrderCreateInput(HTTPRequestData):
     notifyUrl: Optional[str]
     buyer: Optional[OrderCreateInputBuyer]
     products: List[OrderCreateInputProduct]
+    payMethods: Optional[OrderCreateInputPayMethods]
 
 
 class OrderCaptureInput(HTTPRequestData):

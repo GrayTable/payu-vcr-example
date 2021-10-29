@@ -4,12 +4,7 @@ from ..config import PayUConfig, PayUUrls
 from ..requestor import Requestor
 from ..requestor.abstract import AbstractRequestor
 from ..spec import enums, inputs, outputs
-from ..spec.http import (
-    HTTPMethod,
-    HTTPRequest,
-    HTTPResponse,
-    SignedHTTPHeaders,
-)
+from ..spec.http import HTTPMethod, HTTPRequest, HTTPResponse, SignedHTTPHeaders
 from .abstract import AbstractPayUClient, DictOrInput
 from .exceptions import PayUError
 
@@ -174,3 +169,18 @@ class PayUClient(AbstractPayUClient):
 
         refund_create = outputs.RefundCreateOutput(**response.data)
         return refund_create
+
+    def get_pay_methods(self) -> outputs.PayMethodsOutput:
+        """
+        SEE: https://developers.payu.com/en/restapi.html#Transparent_retrieve
+        """
+        url = self.__create_api_url("/paymethods")
+
+        request = HTTPRequest(
+            method=HTTPMethod.GET,
+            url=url,
+        )
+        response = self.__send_signed_request(request=request)
+
+        pay_methods = outputs.PayMethodsOutput(**response.data)
+        return pay_methods

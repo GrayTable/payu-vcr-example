@@ -4,8 +4,9 @@ from json.decoder import JSONDecodeError
 
 import pytest
 import vcr
-from payu.spec import http
 from vcr.config import VCR
+
+from payu.spec import http
 
 from ..client import PayUClient
 from ..config import PayUConfig

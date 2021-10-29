@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Any, List, Literal, Optional
 
 from pydantic.main import BaseModel
 
@@ -175,3 +175,26 @@ class OrderCancelOutput(BaseModel):
     @property
     def success(self) -> bool:
         return self.status and self.status.statusCode == StatusCode.SUCCESS or False
+
+
+class PayMethodsOutputPBL(BaseModel):
+    """
+    SEE: https://developers.payu.com/en/restapi.html#Transparent_retrieve
+    """
+
+    value: str
+    name: str
+    brandImageUrl: str
+    status: Literal["ENABLED", "DISABLED"]
+    minAmount: int
+    maxAmount: int
+
+
+class PayMethodsOutput(BaseModel):
+    """
+    SEE: https://developers.payu.com/en/restapi.html#Transparent_retrieve
+    """
+
+    payByLinks: List[PayMethodsOutputPBL]
+    cardTokens: List[Any]
+    pexTokens: List[Any]

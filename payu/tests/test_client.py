@@ -2,10 +2,11 @@ from unittest import mock
 from unittest.mock import MagicMock
 
 import pytest
+from vcr.config import VCR
+
 from payu.client.exceptions import PayUError
 from payu.requestor.requestor import Requestor
 from payu.spec.http import HTTPResponse
-from vcr.config import VCR
 
 from ..client import PayUClient
 from ..spec import OrderCreateInput, RefundCreateInput
@@ -86,6 +87,16 @@ def test_cancel_order(
         )
 
     assert capture_response.success is True
+
+
+def test_get_pay_methods(
+    payu_vcr: VCR,
+    payu_client: PayUClient,
+):
+    with payu_vcr.use_cassette("client_get_pay_methods.json"):
+        paymethods = payu_client.get_pay_methods()
+
+    assert len(paymethods.payByLinks) > 0
 
 
 @mock.patch.object(Requestor, "send_request")
