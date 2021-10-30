@@ -5,7 +5,7 @@ pipeline {
       parallel {
         stage('Lint') {
           steps {
-            sh 'sh \'pip install black && black ./payu\''
+            sh 'pip install black && black ./payu'
           }
         }
 
