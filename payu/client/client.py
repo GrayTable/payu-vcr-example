@@ -24,7 +24,7 @@ class PayUClient(AbstractPayUClient):
     def __sign_request(self, request: HTTPRequest) -> HTTPRequest:
         authorize_response = self.authorize()
         request.headers = SignedHTTPHeaders(
-            authorization=f"Bearer {authorize_response.access_token}"
+            Authorization=f"Bearer {authorize_response.access_token}"
         )
         return request
 
@@ -105,7 +105,7 @@ class PayUClient(AbstractPayUClient):
         request = HTTPRequest(
             url=url,
             method=HTTPMethod.POST,
-            data=order_create_input,
+            data=order_create_input.json(),
         )
         response = self.__send_signed_request(request=request)
 
@@ -125,7 +125,7 @@ class PayUClient(AbstractPayUClient):
         request = HTTPRequest(
             url=url,
             method=HTTPMethod.PUT,
-            data=order_capture_input,
+            data=order_capture_input.json(),
         )
         response = self.__send_signed_request(request=request)
 
@@ -163,7 +163,7 @@ class PayUClient(AbstractPayUClient):
         request = HTTPRequest(
             method=HTTPMethod.POST,
             url=url,
-            data=refund_create_input,
+            data=refund_create_input.json(),
         )
         response = self.__send_signed_request(request=request)
 

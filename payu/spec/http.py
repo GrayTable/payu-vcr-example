@@ -39,12 +39,16 @@ class HTTPMethod(str, Enum):
 
 
 class HTTPHeaders(BaseModel):
-    content_type: str = Field("application/x-www-form-urlencoded")
+    content_type: str = Field("application/x-www-form-urlencoded", alias="Content-Type")
+
+    def dict(self, *args, **kwargs):
+        kwargs["by_alias"] = True
+        return super().dict(*args, **kwargs)
 
 
 class SignedHTTPHeaders(HTTPHeaders):
-    content_type: str = Field(MIME_APPLICATION_JSON)
-    authorization: str
+    content_type: str = Field(MIME_APPLICATION_JSON, alias="Content-Type")
+    authorization: str = Field(..., alias="Authorization")
 
 
 class HTTPResponse(BaseModel):
