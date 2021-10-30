@@ -52,6 +52,8 @@ class PayUClient(AbstractPayUClient):
 
     def authorize(self) -> outputs.AuthorizeOutput:
         """
+        PayU REST API 9.1 Signing API calls
+
         SEE: https://developers.payu.com/en/restapi.html#references_api_signature
         """
         url = "{}/pl/standard/user/oauth/authorize".format(self.__urls.base_url)
@@ -71,11 +73,10 @@ class PayUClient(AbstractPayUClient):
         authorize = outputs.AuthorizeOutput(**response.data)
         return authorize
 
-    def get_order(
-        self,
-        order_id: str,
-    ) -> outputs.OrderDetailOutput:
+    def get_order(self, order_id: str) -> outputs.OrderDetailOutput:
         """
+        PayU REST API 7.1 Retrieve order data
+
         SEE: https://developers.payu.com/en/restapi.html#order_data_retrieve
         """
         url = self.__create_api_url("/orders/{}", order_id)
@@ -93,6 +94,8 @@ class PayUClient(AbstractPayUClient):
         self, data: DictOrInput[inputs.OrderCreateInput]
     ) -> outputs.OrderCreateOutput:
         """
+        PayU REST API 2.1 Create order via JSON request
+
         SEE: https://developers.payu.com/en/restapi.html#creating_new_order
         """
         url = self.__create_api_url("/orders")
@@ -114,6 +117,8 @@ class PayUClient(AbstractPayUClient):
 
     def capture_order(self, order_id: str) -> outputs.OrderCaptureOutput:
         """
+        PayU REST API 6 Capture order
+
         SEE: https://developers.payu.com/en/restapi.html#status_update
         """
         url = self.__create_api_url("/orders/{}/status", order_id)
@@ -134,6 +139,8 @@ class PayUClient(AbstractPayUClient):
 
     def cancel_order(self, order_id: str) -> outputs.OrderCancelOutput:
         """
+        PayU REST API 5 Capture order
+
         SEE: https://developers.payu.com/en/restapi.html#cancellation
         """
         url = self.__create_api_url("/orders/{}", order_id)
@@ -151,6 +158,8 @@ class PayUClient(AbstractPayUClient):
         self, order_id: str, data: DictOrInput[inputs.RefundCreateInput]
     ) -> outputs.RefundCreateOutput:
         """
+        PayU REST API 4.1 Creating refund
+
         SEE: https://developers.payu.com/en/restapi.html#refunds_create
         """
         if not isinstance(data, inputs.RefundCreateInput):
@@ -170,8 +179,26 @@ class PayUClient(AbstractPayUClient):
         refund_create = outputs.RefundCreateOutput(**response.data)
         return refund_create
 
+    def get_refunds(self, order_id: str) -> outputs.RefundsOutput:
+        """
+        PayU REST API 4.2 Retrieving refund data
+
+        SEE: https://developers.payu.com/en/restapi.html#Transparent_retrieve
+        """
+        url = self.__create_api_url("/orders/{}/refunds", order_id)
+
+        request = HTTPRequest(
+            method=HTTPMethod.GET,
+            url=url,
+        )
+        response = self.__send_signed_request(request=request)
+        refunds = outputs.RefundsOutput(**response.data)
+        return refunds
+
     def get_pay_methods(self) -> outputs.PayMethodsOutput:
         """
+        PayU REST API 8.1 Retrieve payment methods data
+
         SEE: https://developers.payu.com/en/restapi.html#Transparent_retrieve
         """
         url = self.__create_api_url("/paymethods")

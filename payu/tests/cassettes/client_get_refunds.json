@@ -1,0 +1,461 @@
+{
+    "version": 1,
+    "interactions": [
+        {
+            "request": {
+                "method": "POST",
+                "uri": "https://secure.snd.payu.com/pl/standard/user/oauth/authorize",
+                "body": "b\"b'grant_type=client_credentials&client_id=REDACTED&client_secret=REDACTED'\"",
+                "headers": {
+                    "User-Agent": [
+                        "python-requests/2.22.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Content-Type": [
+                        "application/x-www-form-urlencoded"
+                    ],
+                    "Content-Length": [
+                        "93"
+                    ]
+                }
+            },
+            "response": {
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Sat, 30 Oct 2021 09:04:08 GMT"
+                    ],
+                    "x-xss-protection": [
+                        "1; mode=block"
+                    ],
+                    "correlation-id": [
+                        "6e305216-dcc3-4bea-95e6-b27e0f21ecd1"
+                    ],
+                    "pragma": [
+                        "no-cache",
+                        "no-cache"
+                    ],
+                    "Content-Type": [
+                        "application/json;charset=UTF-8"
+                    ],
+                    "set-cookie": [
+                        "cookieFingerprint=baa6aa3e-8421-471b-ba53-9f55570d05a7; Expires=Sun, 30-Oct-2022 09:04:08 GMT; Path=/; Secure; HttpOnly",
+                        "payu_persistent=mobile_agent-false#; Expires=Tue, 25-Oct-2022 09:04:08 GMT; Path=/; Secure; HttpOnly"
+                    ],
+                    "expires": [
+                        "0"
+                    ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ],
+                    "cache-control": [
+                        "no-store",
+                        "no-cache, no-store, must-revalidate"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ]
+                },
+                "body": {
+                    "string": "{\"access_token\": \"REDACTED\", \"token_type\": \"bearer\", \"expires_in\": 43199, \"grant_type\": \"client_credentials\"}"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "POST",
+                "uri": "https://secure.snd.payu.com/api/v2_1/orders",
+                "body": "b'b\\'{\"merchantPosId\": \"REDACTED\", \"description\": \"TEST_DESCRIPTION\", \"currencyCode\": \"PLN\", \"totalAmount\": \"1000\", \"customerIp\": \"127.0.0.1\", \"notifyUrl\": null, \"buyer\": {\"email\": \"johndoe@fakemail.com\", \"phone\": \"988988988\", \"firstName\": \"John\", \"lastName\": \"Doe\", \"language\": \"pl\"}, \"products\": [{\"name\": \"TEST_PRODUCT\", \"unitPrice\": \"100\", \"quantity\": \"10\"}], \"payMethods\": null}\\''",
+                "headers": {
+                    "User-Agent": [
+                        "python-requests/2.22.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Content-Length": [
+                        "376"
+                    ],
+                    "Authorization": [
+                        "REDACTED"
+                    ]
+                }
+            },
+            "response": {
+                "status": {
+                    "code": 302,
+                    "message": "Found"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Sat, 30 Oct 2021 09:04:09 GMT"
+                    ],
+                    "correlation-id": [
+                        "244453c0-8dab-44cb-8a75-a920c66cccdc"
+                    ],
+                    "location": [
+                        "https://merch-prod.snd.payu.com/pay/?orderId=34CZGNNDWN211030GUEST000P01&token=eyJhbGciOiJIUzI1NiJ9.eyJvcmRlcklkIjoiMzRDWkdOTkRXTjIxMTAzMEdVRVNUMDAwUDAxIiwicG9zSWQiOiJLUkk4R0VDUiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl0sInBheWVyRW1haWwiOiJqb2huZG9lQGZha2VtYWlsLmNvbSIsImV4cCI6MTYzNTY3MTA0OSwiaXNzIjoiUEFZVSIsImF1ZCI6ImFwaS1nYXRld2F5Iiwic3ViIjoiUGF5VSBzdWJqZWN0IiwianRpIjoiYWUxNjlkMmQtNDE5OC00N2MwLTgwYTctNzNiNmRkZDQxZWRlIn0.aZ_kvY0meDdXHtOxETIijAgSGqfOvO-9IoYM9o0MCXo"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "pragma": [
+                        "no-cache"
+                    ],
+                    "expires": [
+                        "0"
+                    ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ],
+                    "cache-control": [
+                        "no-cache, no-store, must-revalidate"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ]
+                },
+                "body": {
+                    "string": "{\"status\": {\"statusCode\": \"SUCCESS\"}, \"redirectUri\": \"https://merch-prod.snd.payu.com/pay/?orderId=34CZGNNDWN211030GUEST000P01&token=eyJhbGciOiJIUzI1NiJ9.eyJvcmRlcklkIjoiMzRDWkdOTkRXTjIxMTAzMEdVRVNUMDAwUDAxIiwicG9zSWQiOiJLUkk4R0VDUiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl0sInBheWVyRW1haWwiOiJqb2huZG9lQGZha2VtYWlsLmNvbSIsImV4cCI6MTYzNTY3MTA0OSwiaXNzIjoiUEFZVSIsImF1ZCI6ImFwaS1nYXRld2F5Iiwic3ViIjoiUGF5VSBzdWJqZWN0IiwianRpIjoiYWUxNjlkMmQtNDE5OC00N2MwLTgwYTctNzNiNmRkZDQxZWRlIn0.aZ_kvY0meDdXHtOxETIijAgSGqfOvO-9IoYM9o0MCXo\", \"orderId\": \"34CZGNNDWN211030GUEST000P01\", \"access_token\": \"REDACTED\"}"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "POST",
+                "uri": "https://secure.snd.payu.com/pl/standard/user/oauth/authorize",
+                "body": "b\"b'grant_type=client_credentials&client_id=REDACTED&client_secret=REDACTED'\"",
+                "headers": {
+                    "User-Agent": [
+                        "python-requests/2.22.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Content-Type": [
+                        "application/x-www-form-urlencoded"
+                    ],
+                    "Content-Length": [
+                        "93"
+                    ]
+                }
+            },
+            "response": {
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Sat, 30 Oct 2021 09:04:25 GMT"
+                    ],
+                    "x-xss-protection": [
+                        "1; mode=block"
+                    ],
+                    "correlation-id": [
+                        "fa57f9bf-251e-40c7-8939-1f725d0badb5"
+                    ],
+                    "pragma": [
+                        "no-cache",
+                        "no-cache"
+                    ],
+                    "Content-Type": [
+                        "application/json;charset=UTF-8"
+                    ],
+                    "set-cookie": [
+                        "cookieFingerprint=082a9bde-71bb-4760-ba0b-e79b7490c8b5; Expires=Sun, 30-Oct-2022 09:04:25 GMT; Path=/; Secure; HttpOnly",
+                        "payu_persistent=mobile_agent-false#; Expires=Tue, 25-Oct-2022 09:04:25 GMT; Path=/; Secure; HttpOnly"
+                    ],
+                    "expires": [
+                        "0"
+                    ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ],
+                    "cache-control": [
+                        "no-store",
+                        "no-cache, no-store, must-revalidate"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ]
+                },
+                "body": {
+                    "string": "{\"access_token\": \"REDACTED\", \"token_type\": \"bearer\", \"expires_in\": 43199, \"grant_type\": \"client_credentials\"}"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "POST",
+                "uri": "https://secure.snd.payu.com/api/v2_1/orders/34CZGNNDWN211030GUEST000P01/refunds",
+                "body": "b'b\\'{\"refund\": {\"description\": \"TEST_REFUND_DESCRIPTION\", \"amount\": null}}\\''",
+                "headers": {
+                    "User-Agent": [
+                        "python-requests/2.22.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Content-Length": [
+                        "70"
+                    ],
+                    "Authorization": [
+                        "REDACTED"
+                    ]
+                }
+            },
+            "response": {
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Sat, 30 Oct 2021 09:04:25 GMT"
+                    ],
+                    "x-xss-protection": [
+                        "1; mode=block"
+                    ],
+                    "correlation-id": [
+                        "653064ff-04fa-445f-b498-b080d1bae6af"
+                    ],
+                    "pragma": [
+                        "no-cache",
+                        "no-cache"
+                    ],
+                    "Content-Type": [
+                        "application/json;charset=UTF-8"
+                    ],
+                    "expires": [
+                        "0",
+                        "0"
+                    ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ],
+                    "cache-control": [
+                        "no-cache, no-store, max-age=0, must-revalidate",
+                        "no-cache, no-store, must-revalidate"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ]
+                },
+                "body": {
+                    "string": "{\"orderId\": \"34CZGNNDWN211030GUEST000P01\", \"refund\": {\"refundId\": \"5000171765\", \"extRefundId\": \"20211030110425\", \"amount\": \"1000\", \"currencyCode\": \"PLN\", \"description\": \"Uznanie 5000171765 TEST_REFUND_DESCRIPTION\", \"creationDateTime\": \"2021-10-30T11:04:25.440+02:00\", \"status\": \"PENDING\", \"statusDateTime\": \"2021-10-30T11:04:25.533+02:00\"}, \"status\": {\"statusCode\": \"SUCCESS\", \"statusDesc\": \"Refund queued for processing\"}, \"access_token\": \"REDACTED\"}"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "POST",
+                "uri": "https://secure.snd.payu.com/pl/standard/user/oauth/authorize",
+                "body": "b\"b'grant_type=client_credentials&client_id=REDACTED&client_secret=REDACTED'\"",
+                "headers": {
+                    "User-Agent": [
+                        "python-requests/2.22.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Content-Type": [
+                        "application/x-www-form-urlencoded"
+                    ],
+                    "Content-Length": [
+                        "93"
+                    ]
+                }
+            },
+            "response": {
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Sat, 30 Oct 2021 09:04:28 GMT"
+                    ],
+                    "x-xss-protection": [
+                        "1; mode=block"
+                    ],
+                    "correlation-id": [
+                        "d257a56c-e6db-447e-bf99-c25d9efdd1e3"
+                    ],
+                    "pragma": [
+                        "no-cache",
+                        "no-cache"
+                    ],
+                    "Content-Type": [
+                        "application/json;charset=UTF-8"
+                    ],
+                    "set-cookie": [
+                        "cookieFingerprint=d9f9da98-4be7-407c-8c0a-fddd56fc31f7; Expires=Sun, 30-Oct-2022 09:04:28 GMT; Path=/; Secure; HttpOnly",
+                        "payu_persistent=mobile_agent-false#; Expires=Tue, 25-Oct-2022 09:04:28 GMT; Path=/; Secure; HttpOnly"
+                    ],
+                    "expires": [
+                        "0"
+                    ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ],
+                    "cache-control": [
+                        "no-store",
+                        "no-cache, no-store, must-revalidate"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ]
+                },
+                "body": {
+                    "string": "{\"access_token\": \"REDACTED\", \"token_type\": \"bearer\", \"expires_in\": 43199, \"grant_type\": \"client_credentials\"}"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "GET",
+                "uri": "https://secure.snd.payu.com/api/v2_1/orders/34CZGNNDWN211030GUEST000P01/refunds",
+                "body": "b'None'",
+                "headers": {
+                    "User-Agent": [
+                        "python-requests/2.22.0"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "Authorization": [
+                        "REDACTED"
+                    ]
+                }
+            },
+            "response": {
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Date": [
+                        "Sat, 30 Oct 2021 09:04:28 GMT"
+                    ],
+                    "x-xss-protection": [
+                        "1; mode=block"
+                    ],
+                    "correlation-id": [
+                        "7713e100-b5b2-49fb-856c-682ba357fa41"
+                    ],
+                    "pragma": [
+                        "no-cache",
+                        "no-cache"
+                    ],
+                    "Content-Type": [
+                        "application/json;charset=UTF-8"
+                    ],
+                    "expires": [
+                        "0",
+                        "0"
+                    ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ],
+                    "cache-control": [
+                        "no-cache, no-store, max-age=0, must-revalidate",
+                        "no-cache, no-store, must-revalidate"
+                    ],
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
+                    ]
+                },
+                "body": {
+                    "string": "{\"refunds\": [{\"refundId\": \"5000171765\", \"extRefundId\": \"20211030110425\", \"amount\": \"1000\", \"currencyCode\": \"PLN\", \"description\": \"Uznanie 5000171765 TEST_REFUND_DESCRIPTION\", \"creationDateTime\": \"2021-10-30T11:04:25.440+02:00\", \"status\": \"PENDING\"}], \"access_token\": \"REDACTED\"}"
+                }
+            }
+        }
+    ]
+}

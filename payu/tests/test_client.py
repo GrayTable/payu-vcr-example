@@ -19,13 +19,27 @@ def test_authorize(payu_vcr: VCR, payu_client: PayUClient):
     assert response.access_token is not None
 
 
+def test_get_order(
+    payu_vcr: VCR,
+    payu_client: PayUClient,
+    order_create_input: OrderCreateInput,
+):
+    with payu_vcr.use_cassette("client_get_order.json"):
+        create_order_response = payu_client.create_order(order_create_input)
+        assert create_order_response.orderId is not None
+
+        get_order_response = payu_client.get_order(create_order_response.orderId)
+
+    assert get_order_response.status.statusCode == StatusCode.SUCCESS
+
+
 def test_create_order(
     payu_vcr: VCR, payu_client: PayUClient, order_create_input: OrderCreateInput
 ):
     with payu_vcr.use_cassette("client_create_order.json"):
-        response = payu_client.create_order(order_create_input)
+        create_order_response = payu_client.create_order(order_create_input)
 
-    assert response.status.statusCode == StatusCode.SUCCESS
+    assert create_order_response.status.statusCode == StatusCode.SUCCESS
 
 
 def test_capture_order(
@@ -40,6 +54,38 @@ def test_capture_order(
         )
 
     assert capture_response.status.statusCode == StatusCode.SUCCESS
+
+
+def test_cancel_order(
+    payu_vcr: VCR,
+    payu_client: PayUClient,
+    order_create_input: OrderCreateInput,
+):
+    with payu_vcr.use_cassette("client_cancel_order.json"):
+        create_order_response = payu_client.create_order(order_create_input)
+        assert create_order_response.orderId is not None
+
+        capture_response = payu_client.cancel_order(
+            order_id=create_order_response.orderId
+        )
+
+    assert capture_response.status.statusCode == StatusCode.SUCCESS
+
+
+def test_get_refunds(
+    payu_vcr: VCR,
+    payu_client: PayUClient,
+    order_create_input: OrderCreateInput,
+    refund_create_input: RefundCreateInput,
+):
+    with payu_vcr.use_cassette("client_get_refunds.json"):
+        create_order_response = payu_client.create_order(order_create_input)
+        payu_client.create_refund(create_order_response.orderId, refund_create_input)
+        get_refunds_response = payu_client.get_refunds(
+            order_id=create_order_response.orderId
+        )
+
+    assert len(get_refunds_response.refunds) > 0
 
 
 def test_create_refund(
@@ -57,36 +103,6 @@ def test_create_refund(
         )
 
     assert create_refund_response.status.statusCode == StatusCode.SUCCESS
-
-
-def test_get_order(
-    payu_vcr: VCR,
-    payu_client: PayUClient,
-    order_create_input: OrderCreateInput,
-):
-    with payu_vcr.use_cassette("client_get_order.json"):
-        create_order_response = payu_client.create_order(order_create_input)
-        assert create_order_response.orderId is not None
-
-        get_order_response = payu_client.get_order(create_order_response.orderId)
-
-    assert get_order_response.status.statusCode == StatusCode.SUCCESS
-
-
-def test_cancel_order(
-    payu_vcr: VCR,
-    payu_client: PayUClient,
-    order_create_input: OrderCreateInput,
-):
-    with payu_vcr.use_cassette("client_cancel_order.json"):
-        create_order_response = payu_client.create_order(order_create_input)
-        assert create_order_response.orderId is not None
-
-        capture_response = payu_client.cancel_order(
-            order_id=create_order_response.orderId
-        )
-
-    assert capture_response.status.statusCode == StatusCode.SUCCESS
 
 
 def test_get_pay_methods(
