@@ -1,4 +1,4 @@
-[![Build Status](https://jenkins.appweaver.io/job/payu-vcr-example/job/master/badge/icon)](https://jenkins.appweaver.io/job/payu-vcr-example/job/master/)
+[![Build Status](https://jenkins.appweaver.io/buildStatus/icon?job=payu-vcr-example%2Fmaster)](https://jenkins.appweaver.io/job/payu-vcr-example/job/master/)
 
 # VCR example
 
