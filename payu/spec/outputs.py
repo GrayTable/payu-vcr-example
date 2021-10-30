@@ -81,9 +81,10 @@ class OrderCaptureOutput(BaseModel):
         return self.status and self.status.statusCode == StatusCode.SUCCESS or False
 
 
-class RefundCreateOutputRefund(BaseModel):
+class RefundOutput(BaseModel):
     """
     SEE: https://developers.payu.com/en/restapi.html#refunds_create
+    SEE: https://developers.payu.com/en/restapi.html#refunds_retrieve
     """
 
     refundId: str
@@ -93,7 +94,7 @@ class RefundCreateOutputRefund(BaseModel):
     description: str
     creationDateTime: str
     status: str
-    statusDateTime: str
+    statusDateTime: Optional[str]
 
 
 class RefundCreateOutput(BaseModel):
@@ -103,7 +104,7 @@ class RefundCreateOutput(BaseModel):
 
     status: StatusOutput
     orderId: Optional[str]
-    refund: Optional[RefundCreateOutputRefund]
+    refund: Optional[RefundOutput]
 
     @property
     def success(self) -> bool:
@@ -198,3 +199,11 @@ class PayMethodsOutput(BaseModel):
     payByLinks: List[PayMethodsOutputPBL]
     cardTokens: List[Any]
     pexTokens: List[Any]
+
+
+class RefundsOutput(BaseModel):
+    """
+    SEE: https://developers.payu.com/en/restapi.html#refunds_retrieve
+    """
+
+    refunds: List[RefundOutput]
