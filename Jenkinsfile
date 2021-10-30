@@ -6,13 +6,14 @@ pipeline {
         stage('Lint') {
           steps {
             sh '''pip3 install black &&
-python3 -m black ./payu'''
+python3 -m black ./payu --check'''
           }
         }
 
         stage('Type Check') {
           steps {
-            sh 'sh \'pip install mypy && mypy ./payu\''
+            sh '''pip3 install mypy &&
+python3 -m mypy ./payu'''
           }
         }
 
@@ -21,7 +22,7 @@ python3 -m black ./payu'''
 
     stage('Test') {
       steps {
-        sh 'sh \'pip install tox && tox\''
+        sh 'pip3 install tox && python3 -m tox'
       }
     }
 
