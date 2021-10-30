@@ -1,3 +1,5 @@
+[![Build Status](https://jenkins.appweaver.io/job/payu-vcr-example/job/master/badge/icon)](https://jenkins.appweaver.io/job/payu-vcr-example/job/master/)
+
 # VCR example
 
 Repo shows an example of using VCR to record requests and responses when testing an API wrapper
