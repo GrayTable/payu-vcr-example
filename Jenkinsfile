@@ -13,7 +13,7 @@ python3 -m black ./payu --check'''
         stage('Type Check') {
           steps {
             sh '''pip3 install mypy &&
-mypy --install-types && python3 -m mypy ./payu'''
+python3 -m mypy --install-types && python3 -m mypy ./payu'''
           }
         }
 
