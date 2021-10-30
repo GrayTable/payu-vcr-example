@@ -19,21 +19,10 @@ class AuthorizeOutput(BaseModel):
     SEE: https://developers.payu.com/en/restapi.html#references_api_signature
     """
 
-    access_token: Optional[str]
-    token_type: Optional[str]
-    expires_in: Optional[int]
-    grant_type: Optional[str]
-
-    @property
-    def success(self):
-        return all(
-            [
-                self.access_token is not None,
-                self.token_type is not None,
-                self.expires_in is not None,
-                self.grant_type is not None,
-            ]
-        )
+    access_token: str
+    token_type: str
+    expires_in: int
+    grant_type: str
 
 
 class StatusOutput(BaseModel):
@@ -54,19 +43,9 @@ class OrderCreateOutput(BaseModel):
     """
 
     status: StatusOutput
-    redirectUri: Optional[str]
-    orderId: Optional[str]
+    redirectUri: str
+    orderId: str
     extOrderId: Optional[str]
-
-    @property
-    def success(self) -> bool:
-        return all(
-            [
-                self.status and self.status.statusCode == StatusCode.SUCCESS or False,
-                self.redirectUri is not None,
-                self.orderId is not None,
-            ]
-        )
 
 
 class OrderCaptureOutput(BaseModel):
@@ -75,10 +54,6 @@ class OrderCaptureOutput(BaseModel):
     """
 
     status: StatusOutput
-
-    @property
-    def success(self) -> bool:
-        return self.status and self.status.statusCode == StatusCode.SUCCESS or False
 
 
 class RefundOutput(BaseModel):
@@ -103,18 +78,8 @@ class RefundCreateOutput(BaseModel):
     """
 
     status: StatusOutput
-    orderId: Optional[str]
-    refund: Optional[RefundOutput]
-
-    @property
-    def success(self) -> bool:
-        return all(
-            [
-                self.status and self.status.statusCode == StatusCode.SUCCESS or False,
-                self.status is not None,
-                self.refund is not None,
-            ]
-        )
+    orderId: str
+    refund: RefundOutput
 
 
 class OrderDetailOutputProduct(BaseModel):
@@ -151,16 +116,7 @@ class OrderDetailOutput(BaseModel):
     """
 
     status: StatusOutput
-    orders: Optional[List[OrderDetailOutputOrder]]
-
-    @property
-    def success(self) -> bool:
-        return all(
-            [
-                self.status and self.status.statusCode == StatusCode.SUCCESS or False,
-                self.orders is not None and len(self.orders) > 0,
-            ]
-        )
+    orders: List[OrderDetailOutputOrder]
 
 
 class OrderCancelOutput(BaseModel):
@@ -170,12 +126,7 @@ class OrderCancelOutput(BaseModel):
 
     status: StatusOutput
     orderId: str
-
     extOrderId: Optional[str]
-
-    @property
-    def success(self) -> bool:
-        return self.status and self.status.statusCode == StatusCode.SUCCESS or False
 
 
 class PayMethodsOutputPBL(BaseModel):
