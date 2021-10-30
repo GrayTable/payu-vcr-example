@@ -1,28 +1,27 @@
 pipeline {
   agent any
   stages {
-    stage('Lint') {
+    stage('Code Quality') {
       parallel {
         stage('Lint') {
           steps {
-            sh '''pip3 install black &&
-python3 -m black ./payu --check'''
+            sh 'python3 -m pip install black'
+            sh 'python3 -m black ./payu --check'
           }
         }
-
         stage('Type Check') {
           steps {
-            sh '''pip3 install mypy && 
-python3 -m pip install types-requests && python3 -m mypy ./payu'''
+            sh 'python3 -m pip install mypy'
+            sh 'python3 -m pip install types-requests'
+            sh 'python3 -m mypy ./payu'
           }
         }
-
       }
     }
-
     stage('Test') {
       steps {
-        sh 'pip3 install tox && python3 -m tox'
+        sh 'python3 -m pip install tox'
+        sh 'python3 -m tox'
       }
     }
 
