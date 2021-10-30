@@ -36,19 +36,8 @@ class Requestor(AbstractRequestor):
         request_dict.pop("method")
         options = request_dict.pop("options") or {}
 
-        if self.__is_json(request):
-            request_dict["json"] = request_dict.pop("data")
-
         request_kwargs = {
             **request_dict,
             **options,
         }
         return request_kwargs
-
-    def __is_json(self, request: http.HTTPRequest):
-        return all(
-            [
-                request.headers.content_type == http.MIME_APPLICATION_JSON,
-                isinstance(request.data, http.HTTPRequestData),
-            ]
-        )

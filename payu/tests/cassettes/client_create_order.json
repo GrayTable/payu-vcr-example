@@ -19,14 +19,11 @@
                     "Connection": [
                         "keep-alive"
                     ],
-                    "content_type": [
+                    "Content-Type": [
                         "application/x-www-form-urlencoded"
                     ],
                     "Content-Length": [
                         "93"
-                    ],
-                    "Content-Type": [
-                        "application/x-www-form-urlencoded"
                     ]
                 }
             },
@@ -36,28 +33,31 @@
                     "message": "OK"
                 },
                 "headers": {
-                    "cache-control": [
-                        "no-store",
-                        "no-cache, no-store, must-revalidate"
-                    ],
-                    "set-cookie": [
-                        "cookieFingerprint=6ce72367-1d1c-4857-b53d-4ab170b36106; Expires=Tue, 25-Oct-2022 16:58:07 GMT; Path=/; Secure; HttpOnly",
-                        "payu_persistent=mobile_agent-false#; Expires=Thu, 20-Oct-2022 16:58:07 GMT; Path=/; Secure; HttpOnly"
-                    ],
                     "Connection": [
                         "keep-alive"
                     ],
                     "Date": [
-                        "Mon, 25 Oct 2021 16:58:07 GMT"
+                        "Sat, 30 Oct 2021 08:28:29 GMT"
+                    ],
+                    "x-frame-options": [
+                        "SAMEORIGIN"
                     ],
                     "x-xss-protection": [
                         "1; mode=block"
                     ],
-                    "correlation-id": [
-                        "92ca8d10-89d2-44b9-b199-caec0e80d6d8"
+                    "expires": [
+                        "0"
+                    ],
+                    "set-cookie": [
+                        "cookieFingerprint=8c3772d9-1c8b-473f-9f59-110902bc7baf; Expires=Sun, 30-Oct-2022 08:28:29 GMT; Path=/; Secure; HttpOnly",
+                        "payu_persistent=mobile_agent-false#; Expires=Tue, 25-Oct-2022 08:28:29 GMT; Path=/; Secure; HttpOnly"
                     ],
                     "Transfer-Encoding": [
                         "chunked"
+                    ],
+                    "pragma": [
+                        "no-cache",
+                        "no-cache"
                     ],
                     "x-content-type-options": [
                         "nosniff"
@@ -65,15 +65,12 @@
                     "Content-Type": [
                         "application/json;charset=UTF-8"
                     ],
-                    "expires": [
-                        "0"
+                    "cache-control": [
+                        "no-store",
+                        "no-cache, no-store, must-revalidate"
                     ],
-                    "pragma": [
-                        "no-cache",
-                        "no-cache"
-                    ],
-                    "x-frame-options": [
-                        "SAMEORIGIN"
+                    "correlation-id": [
+                        "acbb8474-3b9d-4945-8b09-59fd9e1a875e"
                     ]
                 },
                 "body": {
@@ -85,7 +82,7 @@
             "request": {
                 "method": "POST",
                 "uri": "https://secure.snd.payu.com/api/v2_1/orders",
-                "body": "b'b\\'{\"merchantPosId\": \"REDACTED\", \"description\": \"TEST_DESCRIPTION\", \"currencyCode\": \"PLN\", \"totalAmount\": \"1000\", \"customerIp\": \"127.0.0.1\", \"notifyUrl\": null, \"buyer\": {\"email\": \"johndoe@fakemail.com\", \"phone\": \"988988988\", \"firstName\": \"John\", \"lastName\": \"Doe\", \"language\": \"pl\"}, \"products\": [{\"name\": \"TEST_PRODUCT\", \"unitPrice\": \"100\", \"quantity\": \"10\"}]}\\''",
+                "body": "b'b\\'{\"merchantPosId\": \"REDACTED\", \"description\": \"TEST_DESCRIPTION\", \"currencyCode\": \"PLN\", \"totalAmount\": \"1000\", \"customerIp\": \"127.0.0.1\", \"notifyUrl\": null, \"buyer\": {\"email\": \"johndoe@fakemail.com\", \"phone\": \"988988988\", \"firstName\": \"John\", \"lastName\": \"Doe\", \"language\": \"pl\"}, \"products\": [{\"name\": \"TEST_PRODUCT\", \"unitPrice\": \"100\", \"quantity\": \"10\"}], \"payMethods\": null}\\''",
                 "headers": {
                     "User-Agent": [
                         "python-requests/2.22.0"
@@ -99,14 +96,11 @@
                     "Connection": [
                         "keep-alive"
                     ],
-                    "content_type": [
+                    "Content-Type": [
                         "application/json"
                     ],
                     "Content-Length": [
-                        "356"
-                    ],
-                    "Content-Type": [
-                        "application/json"
+                        "376"
                     ],
                     "Authorization": [
                         "REDACTED"
@@ -119,42 +113,42 @@
                     "message": "Found"
                 },
                 "headers": {
-                    "location": [
-                        "https://merch-prod.snd.payu.com/pay/?orderId=3B8BZB864T211025GUEST000P01&token=eyJhbGciOiJIUzI1NiJ9.eyJvcmRlcklkIjoiM0I4QlpCODY0VDIxMTAyNUdVRVNUMDAwUDAxIiwicG9zSWQiOiJLUkk4R0VDUiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl0sInBheWVyRW1haWwiOiJqb2huZG9lQGZha2VtYWlsLmNvbSIsImV4cCI6MTYzNTI2NzQ4NywiaXNzIjoiUEFZVSIsImF1ZCI6ImFwaS1nYXRld2F5Iiwic3ViIjoiUGF5VSBzdWJqZWN0IiwianRpIjoiNTM0OGMxMmMtOTlmZS00YWJhLWJmNDktM2Y2Y2RmMDVhYmU4In0.v1qhhjwTPzw8xgJekCMsrjc4jQX8uFyrKL5Eq4uZhuk"
-                    ],
-                    "cache-control": [
-                        "no-cache, no-store, must-revalidate"
-                    ],
                     "Connection": [
                         "keep-alive"
                     ],
-                    "correlation-id": [
-                        "227502b9-e029-46ec-8b5b-e294fd9eb94f"
-                    ],
                     "Date": [
-                        "Mon, 25 Oct 2021 16:58:07 GMT"
+                        "Sat, 30 Oct 2021 08:28:29 GMT"
                     ],
-                    "Transfer-Encoding": [
-                        "chunked"
-                    ],
-                    "x-content-type-options": [
-                        "nosniff"
-                    ],
-                    "Content-Type": [
-                        "application/json"
+                    "x-frame-options": [
+                        "SAMEORIGIN"
                     ],
                     "expires": [
                         "0"
                     ],
+                    "Transfer-Encoding": [
+                        "chunked"
+                    ],
                     "pragma": [
                         "no-cache"
                     ],
-                    "x-frame-options": [
-                        "SAMEORIGIN"
+                    "x-content-type-options": [
+                        "nosniff"
+                    ],
+                    "location": [
+                        "https://merch-prod.snd.payu.com/pay/?orderId=WZ5W8GG4B2211030GUEST000P01&token=eyJhbGciOiJIUzI1NiJ9.eyJvcmRlcklkIjoiV1o1VzhHRzRCMjIxMTAzMEdVRVNUMDAwUDAxIiwicG9zSWQiOiJLUkk4R0VDUiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl0sInBheWVyRW1haWwiOiJqb2huZG9lQGZha2VtYWlsLmNvbSIsImV4cCI6MTYzNTY2ODkwOSwiaXNzIjoiUEFZVSIsImF1ZCI6ImFwaS1nYXRld2F5Iiwic3ViIjoiUGF5VSBzdWJqZWN0IiwianRpIjoiNDE5YTU3OTktOTYwZi00M2VlLThiYWUtNjM1YTcxMWFkNDBiIn0.pS3PAC1-Fm-aSswhfP6IX2ComfDBNa2nXVxmz4CN5Lw"
+                    ],
+                    "Content-Type": [
+                        "application/json"
+                    ],
+                    "cache-control": [
+                        "no-cache, no-store, must-revalidate"
+                    ],
+                    "correlation-id": [
+                        "d3ed1653-d07b-4e0c-98c0-6c6541446be7"
                     ]
                 },
                 "body": {
-                    "string": "{\"status\": {\"statusCode\": \"SUCCESS\"}, \"redirectUri\": \"https://merch-prod.snd.payu.com/pay/?orderId=3B8BZB864T211025GUEST000P01&token=eyJhbGciOiJIUzI1NiJ9.eyJvcmRlcklkIjoiM0I4QlpCODY0VDIxMTAyNUdVRVNUMDAwUDAxIiwicG9zSWQiOiJLUkk4R0VDUiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl0sInBheWVyRW1haWwiOiJqb2huZG9lQGZha2VtYWlsLmNvbSIsImV4cCI6MTYzNTI2NzQ4NywiaXNzIjoiUEFZVSIsImF1ZCI6ImFwaS1nYXRld2F5Iiwic3ViIjoiUGF5VSBzdWJqZWN0IiwianRpIjoiNTM0OGMxMmMtOTlmZS00YWJhLWJmNDktM2Y2Y2RmMDVhYmU4In0.v1qhhjwTPzw8xgJekCMsrjc4jQX8uFyrKL5Eq4uZhuk\", \"orderId\": \"3B8BZB864T211025GUEST000P01\", \"access_token\": \"REDACTED\"}"
+                    "string": "{\"status\": {\"statusCode\": \"SUCCESS\"}, \"redirectUri\": \"https://merch-prod.snd.payu.com/pay/?orderId=WZ5W8GG4B2211030GUEST000P01&token=eyJhbGciOiJIUzI1NiJ9.eyJvcmRlcklkIjoiV1o1VzhHRzRCMjIxMTAzMEdVRVNUMDAwUDAxIiwicG9zSWQiOiJLUkk4R0VDUiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0xJRU5UIl0sInBheWVyRW1haWwiOiJqb2huZG9lQGZha2VtYWlsLmNvbSIsImV4cCI6MTYzNTY2ODkwOSwiaXNzIjoiUEFZVSIsImF1ZCI6ImFwaS1nYXRld2F5Iiwic3ViIjoiUGF5VSBzdWJqZWN0IiwianRpIjoiNDE5YTU3OTktOTYwZi00M2VlLThiYWUtNjM1YTcxMWFkNDBiIn0.pS3PAC1-Fm-aSswhfP6IX2ComfDBNa2nXVxmz4CN5Lw\", \"orderId\": \"WZ5W8GG4B2211030GUEST000P01\", \"access_token\": \"REDACTED\"}"
                 }
             }
         }
