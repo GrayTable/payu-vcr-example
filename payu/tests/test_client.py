@@ -4,19 +4,19 @@ from unittest.mock import MagicMock
 import pytest
 from vcr.config import VCR
 
+from payu.client import PayUClient
 from payu.client.exceptions import PayUError
 from payu.requestor.requestor import Requestor
+from payu.spec import OrderCreateInput, RefundCreateInput
+from payu.spec.enums import StatusCode
 from payu.spec.http import HTTPResponse
-
-from ..client import PayUClient
-from ..spec import OrderCreateInput, RefundCreateInput
 
 
 def test_authorize(payu_vcr: VCR, payu_client: PayUClient):
     with payu_vcr.use_cassette("client_authorize.json"):
         response = payu_client.authorize()
 
-    assert response.success
+    assert response.access_token is not None
 
 
 def test_create_order(
@@ -25,7 +25,7 @@ def test_create_order(
     with payu_vcr.use_cassette("client_create_order.json"):
         response = payu_client.create_order(order_create_input)
 
-    assert response.success is True
+    assert response.status.statusCode == StatusCode.SUCCESS
 
 
 def test_capture_order(
@@ -39,7 +39,7 @@ def test_capture_order(
             order_id=create_order_response.orderId
         )
 
-    assert capture_response.success is True
+    assert capture_response.status.statusCode == StatusCode.SUCCESS
 
 
 def test_create_refund(
@@ -56,7 +56,7 @@ def test_create_refund(
             create_order_response.orderId, refund_create_input
         )
 
-    assert create_refund_response.success is True
+    assert create_refund_response.status.statusCode == StatusCode.SUCCESS
 
 
 def test_get_order(
@@ -68,9 +68,9 @@ def test_get_order(
         create_order_response = payu_client.create_order(order_create_input)
         assert create_order_response.orderId is not None
 
-        create_refund_response = payu_client.get_order(create_order_response.orderId)
+        get_order_response = payu_client.get_order(create_order_response.orderId)
 
-    assert create_refund_response.success is True
+    assert get_order_response.status.statusCode == StatusCode.SUCCESS
 
 
 def test_cancel_order(
@@ -86,7 +86,7 @@ def test_cancel_order(
             order_id=create_order_response.orderId
         )
 
-    assert capture_response.success is True
+    assert capture_response.status.statusCode == StatusCode.SUCCESS
 
 
 def test_get_pay_methods(
